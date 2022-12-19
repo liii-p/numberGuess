@@ -4,7 +4,8 @@ public class NumberGuess {
     public static void main(String[] args){
         int randomNum = GenerateNum.GenerateRandomNumber();
         int guess;
-        Boolean play = true;
+        boolean play = true;
+        boolean gameOver = false;
 
         Scanner user = new Scanner(System.in);
 
@@ -12,30 +13,37 @@ public class NumberGuess {
         int tries = 0;
 
         while(play) {
+            //System.out.println("Secret number: " + randomNum); //For debugging.
             System.out.println("GUESS (1-100): ");
             guess = user.nextInt();
             tries++;
 
             if (guess == randomNum) {
                 System.out.println("Correct! You won with " + tries + " tries!");
-
-               /* System.out.println("Would you like to play again? (y/n)");
-                String endGame = user.nextLine();
-                if (endGame == "y") {
-                    play = true;
-                } else play = false;
-
-                Currently, the above does not work as it does not wait for user input
-                and therefore immediately exits the program. I am aiming to allow
-                the user to choose to continue or exit the game.
-                 */
-                break;
+                gameOver = true;
             }
             else if (guess < randomNum) {
                 System.out.println("HIGHER");
             }
+            else if (guess > 100) {
+                System.out.println("Invalid guess.");
+            }
             else {
                 System.out.println("LOWER");
+            }
+
+            if (gameOver) {
+                System.out.println("Would you like to play again? (y/n)");
+                String endGame = user.next();
+                if (endGame.equals("y")) {
+                    play = true;
+                    gameOver = false;
+                    tries = 0;
+                    randomNum = GenerateNum.GenerateRandomNumber();
+                } else play = false;
+                /* The above method is a bit inefficient as I have to reassign
+                variables, but it works. Will improve in the future.
+                 */
             }
         }
     }
