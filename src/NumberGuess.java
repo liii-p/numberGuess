@@ -36,7 +36,6 @@ public class NumberGuess {
                 System.out.println("Would you like to play again? (y/n)");
                 String endGame = user.next();
                 if (endGame.equals("y")) {
-                    play = true;
                     gameOver = false;
                     tries = 0;
                     randomNum = GenerateNum.GenerateRandomNumber();
