@@ -5,8 +5,6 @@ public class GenerateNum {
         Random rand = new Random();
 
         System.out.print("GENERATING NUMBER...");
-       int randomNum = rand.nextInt(100) + 1;
-
-        return randomNum;
+       return rand.nextInt(100) + 1;
     }
 }
