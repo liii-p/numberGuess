@@ -34,7 +34,7 @@ public class NumberGuess {
 
             if (gameOver) {
                 System.out.println("Would you like to play again? (y/n)");
-                String endGame = user.next();
+                String endGame = user.next().toLowerCase();
                 if (endGame.equals("y")) {
                     gameOver = false;
                     tries = 0;
